@@ -27,8 +27,6 @@ Abaixo estão os principais requisitos funcionais definidos para a aplicação:
 | RF13 | Diferenciar permissões entre administrador e voluntário | Média |
 | RF14 | Permitir que o voluntário visualize seus próprios dados | Baixa |
 
----
-
 # 📐 Arquitetura do Projeto e Tecnologias
 
 O sistema foi estruturado utilizando as seguintes tecnologias:
@@ -42,8 +40,6 @@ O sistema foi estruturado utilizando as seguintes tecnologias:
 
 A camada de interface é responsável pela experiência do usuário, validações dos formulários e comunicação com as APIs do sistema.
 
----
-
 ## Back-End
 
 - API Routes do Next.js
@@ -51,8 +47,6 @@ A camada de interface é responsável pela experiência do usuário, validaçõe
 - TypeScript
 
 Responsável pelo processamento das regras de negócio, autenticação e geração dos documentos PDF.
-
----
 
 ## Banco de Dados e Serviços
 
@@ -77,15 +71,11 @@ Responsável pelo armazenamento de:
 - Termos assinados
 - Uploads de documentos
 
----
-
 ## Geração de Documentos
 
 - jsPDF
 
 Biblioteca utilizada para geração automática dos Termos de Adesão em PDF.
-
----
 
 # 🏗️ Arquitetura do Projeto
 
@@ -100,8 +90,6 @@ O fluxo da aplicação ocorre da seguinte forma:
 
 ![Diagrama de Arquitetura](img_readme/Diagrama%20de%20arquitetura.jpg)
 
----
-
 # 🧪 Estratégia de Automação de Testes
 
 Para garantir a qualidade e confiabilidade do sistema, foi definida uma estratégia de testes automatizados em diferentes níveis da aplicação.
@@ -114,8 +102,6 @@ Utilização do **Jest** para validação de funções isoladas, incluindo:
 - Regras de negócio
 - Processamento de dados
 
----
-
 ## Testes de Integração
 
 Testes responsáveis por validar a comunicação entre:
@@ -125,8 +111,6 @@ Testes responsáveis por validar a comunicação entre:
 - Firestore
 - Firebase Storage
 
----
-
 ## Testes End-to-End (E2E)
 
 Utilização do **Cypress** para simular fluxos reais do sistema, como:
@@ -135,8 +119,6 @@ Utilização do **Cypress** para simular fluxos reais do sistema, como:
 - Cadastro de voluntários
 - Upload de documentos
 - Geração de PDFs
-
----
 
 ## 🔄 Gerenciamento e Versionamento do Projeto
 
