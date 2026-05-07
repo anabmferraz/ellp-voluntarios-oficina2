@@ -147,3 +147,6 @@ Para controle de versão e colaboração no desenvolvimento, são utilizados:
 - Git
 - GitHub
 - Trello
+
+🔗 Trello do Projeto:  
+https://trello.com/b/olYMVroA/oficina-2-sistema-de-controle-de-voluntarios-ellp
