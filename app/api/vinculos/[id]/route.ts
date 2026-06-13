@@ -2,9 +2,10 @@ import { NextResponse } from 'next/server';
 import { db } from '../../../../lib/firebase-admin';
 import { validateActivityPeriod } from '../../../../lib/services/activityService';
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const docRef = db.collection('vinculos').doc(params.id);
+    const { id } = await params;
+    const docRef = db.collection('vinculos').doc(id);
     const doc = await docRef.get();
 
     if (!doc.exists) return NextResponse.json({ error: 'Vínculo não encontrado.' }, { status: 404 });
@@ -14,11 +15,12 @@ export async function GET(request: Request, { params }: { params: { id: string }
   }
 }
 
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
+export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await params;
     const data = await request.json();
-    const docRef = db.collection('vinculos').doc(params.id);
-    
+    const docRef = db.collection('vinculos').doc(id);
+
     const doc = await docRef.get();
     if (!doc.exists) return NextResponse.json({ error: 'Vínculo não encontrado.' }, { status: 404 });
 
@@ -38,10 +40,11 @@ export async function PUT(request: Request, { params }: { params: { id: string }
   }
 }
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const docRef = db.collection('vinculos').doc(params.id);
-    
+    const { id } = await params;
+    const docRef = db.collection('vinculos').doc(id);
+
     const doc = await docRef.get();
     if (!doc.exists) return NextResponse.json({ error: 'Vínculo não encontrado.' }, { status: 404 });
 
