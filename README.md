@@ -2,7 +2,7 @@
 
 O **Sistema de Controle de Voluntários (ELLP)** foi desenvolvido para auxiliar na gestão de voluntários do projeto **ELLP (Ensino de Lógica e Linguagem de Programação)**, uma iniciativa formada por estudantes da Universidade Tecnológica Federal do Paraná (UTFPR), com foco em levar conhecimentos de lógica e programação para jovens do ensino público da região de Cornélio Procópio.
 
-O sistema tem como objetivo facilitar o gerenciamento de voluntários, oficinas e documentação, automatizando processos administrativos e melhorando a organização das atividades do projeto.
+O sistema tem como objetivo facilitar o gerenciamento de voluntários, projetos e documentação, automatizando processos administrativos e melhorando a organização das atividades do projeto.
 
 # 📋 Requisitos Funcionais do Sistema
 
@@ -18,7 +18,7 @@ Abaixo estão os principais requisitos funcionais definidos para a aplicação:
 | RF04 | Pesquisar voluntários por nome, CPF ou status | Média |
 | RF05 | Visualizar perfil completo do voluntário | Média |
 | RF06 | Inativar automaticamente voluntários com data de saída expirada | Baixa |
-| RF07 | Registrar vínculo do voluntário com oficinas | Alta |
+| RF07 | Registrar vínculo do voluntário com projetos | Alta |
 | RF08 | Gerar automaticamente o Termo de Adesão em PDF | Alta |
 | RF09 | Registrar aceite do termo pelo voluntário | Média |
 | RF10 | Permitir reemissão de termos atualizados | Baixa |
@@ -59,7 +59,7 @@ Gerenciamento de login, autenticação e controle de sessão dos usuários.
 Banco de dados NoSQL responsável pelo armazenamento de:
 
 - Voluntários
-- Oficinas
+- Projetos
 - Registros de vínculo
 - Informações do sistema
 
@@ -98,18 +98,17 @@ Para garantir a qualidade e confiabilidade do sistema, foi definida uma estraté
 
 Utilização do **Jest** para validação de funções isoladas, incluindo:
 
-- Validação de CPF
+- Validação de campos obrigatórios
 - Regras de negócio
-- Processamento de dados
+- Processamento de datas e horas
 
 ## Testes de Integração
 
 Testes responsáveis por validar a comunicação entre:
 
-- Front-end
-- Firebase Authentication
-- Firestore
-- Firebase Storage
+- API Routes do Next.js
+- Cloud Firestore
+- Regras de validação dos serviços
 
 ## Testes End-to-End (E2E)
 
