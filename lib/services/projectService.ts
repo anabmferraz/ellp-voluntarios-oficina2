@@ -10,17 +10,17 @@ export const isProjectActive = (project: Project): boolean => {
   return today >= start && today <= end;
 };
 
-export const validateProjectPeriod = (project: Project) => {
+export function validateProjectPeriod(data: any) {
   const errors: string[] = [];
-  const start = new Date(project.vigenciaInicio);
-  const end = new Date(project.vigenciaFim);
 
-  if (start > end) {
-    errors.push("A data de início da vigência não pode ser posterior ao término.");
+  if (!data.vigenciaInicio || !data.vigenciaFim) {
+    errors.push('As datas de início e fim são obrigatórias.');
+  } else if (new Date(data.vigenciaInicio) > new Date(data.vigenciaFim)) {
+    errors.push('A data de início da vigência não pode ser posterior ao término.');
   }
 
   return {
     isValid: errors.length === 0,
     errors
   };
-};
+}
