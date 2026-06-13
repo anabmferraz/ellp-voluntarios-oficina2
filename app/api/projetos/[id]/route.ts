@@ -2,29 +2,27 @@ import { NextResponse } from 'next/server';
 import { db } from '../../../../lib/firebase-admin';
 import { validateProjectPeriod } from '../../../../lib/services/projectService';
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const docRef = db.collection('projetos').doc(params.id);
+    const { id } = await params;
+    const docRef = db.collection('projetos').doc(id);
     const doc = await docRef.get();
 
-    if (!doc.exists) {
-      return NextResponse.json({ error: 'Projeto não encontrado.' }, { status: 404 });
-    }
+    if (!doc.exists) return NextResponse.json({ error: 'Projeto não encontrado.' }, { status: 404 });
     return NextResponse.json({ id: doc.id, ...doc.data() }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: 'Erro ao procurar o projeto.' }, { status: 500 });
   }
 }
 
-export async function PUT(request: Request, { params }: { params: { id: string } }) {
+export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await params;
     const data = await request.json();
-    const docRef = db.collection('projetos').doc(params.id);
-    
+    const docRef = db.collection('projetos').doc(id);
+
     const doc = await docRef.get();
-    if (!doc.exists) {
-      return NextResponse.json({ error: 'Projeto não encontrado.' }, { status: 404 });
-    }
+    if (!doc.exists) return NextResponse.json({ error: 'Projeto não encontrado.' }, { status: 404 });
 
     const validation = validateProjectPeriod(data);
     if (!validation.isValid) {
@@ -42,10 +40,11 @@ export async function PUT(request: Request, { params }: { params: { id: string }
   }
 }
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const docRef = db.collection('projetos').doc(params.id);
-    
+    const { id } = await params;
+    const docRef = db.collection('projetos').doc(id);
+
     const doc = await docRef.get();
     if (!doc.exists) return NextResponse.json({ error: 'Projeto não encontrado.' }, { status: 404 });
 
