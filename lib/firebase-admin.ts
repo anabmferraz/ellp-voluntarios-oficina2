@@ -9,8 +9,10 @@ if (!admin.apps.length) {
         ? process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n').replace(/"/g, '')
         : undefined,
     }),
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   });
 }
 
 const db = admin.firestore();
-export { db, admin };
+const storage = admin.storage();
+export { db, storage, admin };
