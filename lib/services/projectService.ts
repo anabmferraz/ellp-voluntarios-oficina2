@@ -6,7 +6,9 @@ export const isProjectActive = (project: Project): boolean => {
   const end = new Date(project.vigenciaFim);
 
   today.setHours(0, 0, 0, 0);
-  
+  start.setHours(0, 0, 0, 0);
+  end.setHours(0, 0, 0, 0);
+
   return today >= start && today <= end;
 };
 
